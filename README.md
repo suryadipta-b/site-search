@@ -1,4 +1,4 @@
-# VConstruct SiteSearch — Construction Project Search Engine
+# SiteSearch — Construction Project Search Engine
 
 A domain-aware search engine and React UI designed for construction project teams to find safety regulations (OSHA 29 CFR Part 1926) and project records (RFIs, Daily Logs, NCRs) using site vocabulary, regional terms, and technical abbreviations.
 
