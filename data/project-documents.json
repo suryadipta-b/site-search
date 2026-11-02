@@ -1,0 +1,242 @@
+[
+  {
+    "id": "rfi-p2-0042",
+    "projectId": "P2",
+    "type": "RFI",
+    "number": "RFI-0042",
+    "discipline": "Structural",
+    "createdAt": "2026-10-14T09:20:00Z",
+    "title": "Lap length at transfer slab TS-3",
+    "body": "Drawing S-301 shows 20 mm Fe 500D bars in transfer slab TS-3 but does not give the lap length. Please confirm whether a 50d lap applies in the tension zone or whether mechanical couplers are required. Contractor proposes staggering laps at 50%. Response: use couplers at TS-3; 50d laps acceptable elsewhere."
+  },
+  {
+    "id": "rfi-p2-0043",
+    "projectId": "P2",
+    "type": "RFI",
+    "number": "RFI-0043",
+    "discipline": "Structural",
+    "createdAt": "2026-10-16T11:05:00Z",
+    "title": "Sariya spacing at slab cut-out near lift core LC-2",
+    "body": "Site team reports that sariya spacing of 150 c/c for bottom bars cannot be maintained around the 1.2 m x 1.5 m slab cut-out at lift core LC-2. Request trimmer bar details and confirmation that spacing may increase to 175 c/c locally."
+  },
+  {
+    "id": "rfi-p2-0044",
+    "projectId": "P2",
+    "type": "RFI",
+    "number": "RFI-0044",
+    "discipline": "MEP",
+    "createdAt": "2026-10-20T08:40:00Z",
+    "title": "HVAC duct opening through PT beam PB-7",
+    "body": "Supply ducts at grid C/4 need a 600 x 400 mm opening through post-tensioned beam PB-7. Request structural approval and tendon profile drawings before any core cutting."
+  },
+  {
+    "id": "rfi-p2-0045",
+    "projectId": "P2",
+    "type": "RFI",
+    "number": "RFI-0045",
+    "discipline": "Civil",
+    "createdAt": "2026-10-22T10:15:00Z",
+    "title": "Concrete grade for PCC below raft",
+    "body": "General notes call for M10 PCC below footings but the raft section on S-102 shows M15. Confirm the grade and thickness of PCC below the raft foundation."
+  },
+  {
+    "id": "rfi-p2-0046",
+    "projectId": "P2",
+    "type": "RFI",
+    "number": "RFI-0046",
+    "discipline": "MEP",
+    "createdAt": "2026-10-27T14:30:00Z",
+    "title": "MEP coordination at level 2 corridor",
+    "body": "Cable tray, sprinkler main and drainage line clash in the level 2 corridor between grids 3 and 5. Ceiling void is only 450 mm. Request a coordinated MEP section and confirmation of the false ceiling level."
+  },
+  {
+    "id": "rfi-p1-0017",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0017",
+    "discipline": "Structural",
+    "createdAt": "2027-02-02T09:00:00Z",
+    "title": "Rebar spacing in first floor slab at balcony cantilever B-4",
+    "body": "Top reinforcement bar spacing of 125 c/c at balcony cantilever B-4 clashes with electrical conduit sleeves. Please advise whether bars may be bundled or spacing adjusted to 140 c/c with additional bars."
+  },
+  {
+    "id": "rfi-p1-0018",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0018",
+    "discipline": "Structural",
+    "createdAt": "2027-02-25T16:10:00Z",
+    "title": "Shuttering removal time for first floor slab",
+    "body": "Please confirm the minimum striking time for soffit shuttering and props of the first floor slab (span 4.2 m, OPC 53 grade concrete). Site proposes removing props at 10 days."
+  },
+  {
+    "id": "rfi-p1-0019",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0019",
+    "discipline": "Architectural",
+    "createdAt": "2027-03-04T12:00:00Z",
+    "title": "GWB partition head detail at false ceiling",
+    "body": "Drawing A-512 shows gypsum board partitions stopping at false ceiling level. Confirm whether partitions between apartments must run up to the slab soffit for acoustic separation, and provide the head detail."
+  },
+  {
+    "id": "rfi-p1-0020",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0020",
+    "discipline": "Architectural",
+    "createdAt": "2027-03-08T10:45:00Z",
+    "title": "Waterproofing membrane at podium planter boxes",
+    "body": "This request for information concerns the planter boxes at podium level. The specification calls for a PVC membrane but the detail shows crystalline coating. Confirm the system and the root barrier requirement."
+  },
+  {
+    "id": "rfi-p1-0021",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0021",
+    "discipline": "Architectural",
+    "createdAt": "2027-03-11T09:30:00Z",
+    "title": "Cat ladder access to overhead water tank",
+    "body": "The cat ladder to the overhead tank is drawn without an extension above the roof. Confirm that side rails extend 1 m above the landing and whether a safety cage is required."
+  },
+  {
+    "id": "rfi-p1-0022",
+    "projectId": "P1",
+    "type": "RFI",
+    "number": "RFI-0022",
+    "discipline": "Structural",
+    "createdAt": "2027-01-28T15:20:00Z",
+    "title": "Reinforcing steel detailing at plinth beam junction",
+    "body": "Reinforcing steel from plinth beams PB-2 and PB-5 congests the junction at column C-8. Request a revised bar bending schedule or permission to crank the bottom bars."
+  },
+  {
+    "id": "dl-p1-0112",
+    "projectId": "P1",
+    "type": "DailyLog",
+    "number": "DL-P1-0112",
+    "discipline": "HSE",
+    "createdAt": "2027-01-12T18:00:00Z",
+    "title": "Daily log 12 Jan 2027",
+    "body": "Excavation continued at grids A-D/1-4, about 180 m3 removed. Depth reached 3.2 m on the east side; sheet piling started next to the boundary wall. Two workers found without harness on scafolding near the lift pit; work stopped and a toolbox talk on PPE was held."
+  },
+  {
+    "id": "dl-p1-0220",
+    "projectId": "P1",
+    "type": "DailyLog",
+    "number": "DL-P1-0220",
+    "discipline": "Structural",
+    "createdAt": "2027-02-20T18:00:00Z",
+    "title": "Daily log 20 Feb 2027",
+    "body": "Centering for the ground floor slab is 70% complete. Rebar binding started in bays 1 to 3. Ground floor slab pour planned for 24 Feb, subject to inspection."
+  },
+  {
+    "id": "dl-p1-0302",
+    "projectId": "P1",
+    "type": "DailyLog",
+    "number": "DL-P1-0302",
+    "discipline": "Structural",
+    "createdAt": "2027-03-02T18:00:00Z",
+    "title": "Daily log 2 Mar 2027",
+    "body": "Ground floor slab concreting completed, 210 m3 of M25. Cubes cast. Curing by ponding. Props to remain until striking is approved under RFI-0018."
+  },
+  {
+    "id": "dl-p2-1105",
+    "projectId": "P2",
+    "type": "DailyLog",
+    "number": "DL-P2-1105",
+    "discipline": "MEP",
+    "createdAt": "2026-11-05T18:00:00Z",
+    "title": "Daily log 5 Nov 2026",
+    "body": "Electrical conduiting on admin block level 2: 420 rm laid. Plumbing sleeves fixed before the slab pour. Rain stopped work from 14:00 to 16:00."
+  },
+  {
+    "id": "dl-p2-1106",
+    "projectId": "P2",
+    "type": "DailyLog",
+    "number": "DL-P2-1106",
+    "discipline": "HSE",
+    "createdAt": "2026-11-06T18:00:00Z",
+    "title": "Daily log 6 Nov 2026",
+    "body": "Guardrail missing at the open edge of the level 3 slab; temporary barricade installed. Safety net along the north face pending material delivery. Personal fall arrest systems issued to 6 workers."
+  },
+  {
+    "id": "dl-p2-1107",
+    "projectId": "P2",
+    "type": "DailyLog",
+    "number": "DL-P2-1107",
+    "discipline": "Structural",
+    "createdAt": "2026-11-07T18:00:00Z",
+    "title": "Daily log 7 Nov 2026",
+    "body": "PT stressing of beams PB-5 to PB-8 completed and elongation records submitted. Duct opening in PB-7 on hold pending reply to RFI-0044."
+  },
+  {
+    "id": "dl-p2-1108",
+    "projectId": "P2",
+    "type": "DailyLog",
+    "number": "DL-P2-1108",
+    "discipline": "Civil",
+    "createdAt": "2026-11-08T18:00:00Z",
+    "title": "Daily log 8 Nov 2026",
+    "body": "Waterproofing of underground tank walls started with crystalline coating. Backfilling of the east side deferred until the coating cures."
+  },
+  {
+    "id": "ncr-p1-0003",
+    "projectId": "P1",
+    "type": "NCR",
+    "number": "NCR-0003",
+    "discipline": "Structural",
+    "createdAt": "2027-02-10T13:00:00Z",
+    "title": "Honeycombing in column C-12, ground floor",
+    "body": "Honeycombing observed after removing the shuttering at column C-12. Cover to rebar below 25 mm at two locations. Repair with polymer-modified mortar after engineer approval."
+  },
+  {
+    "id": "ncr-p1-0004",
+    "projectId": "P1",
+    "type": "NCR",
+    "number": "NCR-0004",
+    "discipline": "Architectural",
+    "createdAt": "2027-04-02T11:30:00Z",
+    "title": "AAC blockwork out of plumb at stair core",
+    "body": "Blockwork at the level 2 stair core is 18 mm out of plumb over 3 m height, beyond the 10 mm tolerance. Dismantle and rebuild the affected courses."
+  },
+  {
+    "id": "ncr-p1-0005",
+    "projectId": "P1",
+    "type": "NCR",
+    "number": "NCR-0005",
+    "discipline": "Architectural",
+    "createdAt": "2027-04-09T10:00:00Z",
+    "title": "Drywall boards stored in the open",
+    "body": "Drywall boards delivered for level 1 partitions were stored uncovered and show moisture damage. Reject the affected boards and store the remainder off the ground under cover."
+  },
+  {
+    "id": "ncr-p2-0007",
+    "projectId": "P2",
+    "type": "NCR",
+    "number": "NCR-0007",
+    "discipline": "HSE",
+    "createdAt": "2026-11-12T09:15:00Z",
+    "title": "Fall protection plan not followed at roof level",
+    "body": "Inspection found workers at the roof parapet without any fall protection. Contractor to submit a revised fall protection plan and retrain the crew before roof work resumes."
+  },
+  {
+    "id": "ncr-p2-0008",
+    "projectId": "P2",
+    "type": "NCR",
+    "number": "NCR-0008",
+    "discipline": "HSE",
+    "createdAt": "2026-11-14T15:40:00Z",
+    "title": "Excavation without protective system at UG tank",
+    "body": "Excavation for the underground water tank reached 2.1 m (about 7 feet) with vertical sides and no shoring, sloping or trench box. Work stopped; contractor to provide a protective system as per the approved method statement."
+  },
+  {
+    "id": "ncr-p2-0009",
+    "projectId": "P2",
+    "type": "NCR",
+    "number": "NCR-0009",
+    "discipline": "Structural",
+    "createdAt": "2026-11-18T12:25:00Z",
+    "title": "Release agent on reinforcement at level 3 slab",
+    "body": "Formwork release agent was sprayed after the reinforcement was placed, contaminating the bars at the level 3 slab. Clean the bars and re-inspect before concreting."
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "term": "rebar",
+    "expandsTo": [
+      "reinforcement bar",
+      "reinforcing steel",
+      "sariya"
+    ],
+    "direction": "two-way"
+  },
+  {
+    "term": "formwork",
+    "expandsTo": [
+      "shuttering",
+      "centering"
+    ],
+    "direction": "two-way"
+  },
+  {
+    "term": "GWB",
+    "expandsTo": [
+      "gypsum wallboard",
+      "gypsum board",
+      "drywall"
+    ],
+    "direction": "two-way"
+  },
+  {
+    "term": "RFI",
+    "expandsTo": [
+      "request for information"
+    ],
+    "direction": "two-way"
+  },
+  {
+    "term": "PPE",
+    "expandsTo": [
+      "personal protective equipment"
+    ],
+    "direction": "two-way"
+  },
+  {
+    "term": "fall protection",
+    "expandsTo": [
+      "guardrail",
+      "safety net",
+      "personal fall arrest system"
+    ],
+    "direction": "one-way"
+  }
+]

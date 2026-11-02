@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ECFR>
+  <DIV5 TYPE="PART" N="1926">
+    <HEAD>PART 1926—SAFETY AND HEALTH REGULATIONS FOR CONSTRUCTION</HEAD>
+    
+    <!-- SUBPART L: Scaffolds -->
+    <DIV6 TYPE="SUBPART" N="L">
+      <HEAD>Subpart L—Scaffolds</HEAD>
+      
+      <DIV8 TYPE="SECTION" N="1926.450">
+        <HEAD>§ 1926.450 Scope, application and definitions applicable to this subpart.</HEAD>
+        <P>(a) Scope and application. This subpart applies to all scaffolds used in workplaces covered by this part. It does not apply to crane or derrick suspended personnel platforms.</P>
+        <P>(b) Definitions. Body belt, body harness, cleat, competent person, guardrail system, personal fall arrest system, rated load, scaffold.</P>
+      </DIV8>
+      
+      <DIV8 TYPE="SECTION" N="1926.451">
+        <HEAD>§ 1926.451 General requirements.</HEAD>
+        <P>(a) Capacity. (1) Except as provided in paragraphs (a)(2), (a)(3), (a)(4), (a)(5) and (g) of this section, each scaffold and scaffold component shall be capable of supporting, without failure, its own weight and at least 4 times the maximum intended load applied or transmitted to it.</P>
+        <P>(b) Scaffold platform construction. (1) Each platform on all working levels of scaffolds shall be fully planked or decked between the front uprights and the guardrail supports.</P>
+        <P>(e) Access. (1) When scaffold platforms are more than 2 feet (0.6 m) above or below a point of access, portable ladders, hook-on ladders, attachable ladders, stair towers, stairway-type ladders, ramps, walkways, or built-in ladders shall be used to provide access.</P>
+        <P>(g) Fall protection. (1) Each employee on a scaffold more than 10 feet (3.1 m) above a lower level shall be protected from falling to that lower level. Paragraphs (g)(1)(i) through (vii) of this section establish the types of fall protection to be provided to the employees on each type of scaffold.</P>
+        <P>(g)(1)(i) Each employee on a boatswains' chair, catenary scaffold, float scaffold, needle beam scaffold, or ladder jack scaffold shall be protected by a personal fall arrest system;</P>
+        <P>(g)(1)(iv) Each employee on a self-contained adjustable scaffold shall be protected by a guardrail system (with minimum 200 pound toprail capacity) when the platform is supported by the frame structure, and by both a personal fall arrest system and a guardrail system when the platform is supported by ropes.</P>
+        <P>(g)(4) Guardrail systems installed to meet the requirements of this section shall comply with the following provisions: (i) Guardrail systems shall be installed along all open sides and ends of platforms. Guardrail systems shall be installed before the scaffold is released for use by employees other than erection/dismantling crews.</P>
+      </DIV8>
+      
+      <DIV8 TYPE="SECTION" N="1926.452">
+        <HEAD>§ 1926.452 Additional requirements applicable to specific types of scaffolds.</HEAD>
+        <P>(a) Pole scaffolds. (b) Tube and coupler scaffolds. (c) Fabricated frame scaffolds. (w) Mobile scaffolds. Scaffolds shall be braced by cross, horizontal, or diagonal braces.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.454">
+        <HEAD>§ 1926.454 Training requirements.</HEAD>
+        <P>This section supplements and clarifies the requirements of § 1926.21 regarding the hazards of working on scaffolds. The employer shall have each employee who performs work while on a scaffold trained by a person qualified in the subject matter to recognize the hazards associated with the type of scaffold being used.</P>
+      </DIV8>
+    </DIV6>
+
+    <!-- SUBPART M: Fall Protection -->
+    <DIV6 TYPE="SUBPART" N="M">
+      <HEAD>Subpart M—Fall Protection</HEAD>
+      
+      <DIV8 TYPE="SECTION" N="1926.500">
+        <HEAD>§ 1926.500 Scope, application, and definitions applicable to this subpart.</HEAD>
+        <P>(a) Scope and application. (1) This subpart sets forth requirements and specifications for fall protection systems and equipment in construction workplaces.</P>
+        <P>(b) Definitions. Body harness, deceleration device, guardrail system, hole, leading edge, personal fall arrest system, positioning device system, safety net system, warning line system.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.501">
+        <HEAD>§ 1926.501 Duty to have fall protection.</HEAD>
+        <P>(a) General. (1) This section sets forth requirements for employers to provide fall protection systems. All fall protection required by this part shall conform to the criteria set forth in § 1926.502 of this subpart.</P>
+        <P>(b)(1) Unprotected sides and edges. Each employee on a walking/working surface (horizontal and vertical surface) with an unprotected side or edge which is 6 feet (1.8 m) or more above a lower level shall be protected from falling by the use of guardrail systems, safety net systems, or personal fall arrest systems.</P>
+        <P>(b)(2) Leading edges. Each employee who is constructing a leading edge 6 feet (1.8 m) or more above lower levels shall be protected by guardrail systems, safety net systems, or personal fall arrest systems.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.502">
+        <HEAD>§ 1926.502 Fall protection systems criteria and practices.</HEAD>
+        <P>(a) General. (1) Fall protection systems required by this part shall comply with the applicable provisions of this section.</P>
+        <P>(b) Guardrail systems. Guardrail systems and their use shall comply with the following provisions: (1) Top edge height of top rails, or equivalent guardrail system members, shall be 42 inches (1.1 m) plus or minus 3 inches (8 cm) above the walking/working level.</P>
+        <P>(c) Safety net systems. Safety net systems and their use shall comply with the following provisions: (1) Safety nets shall be installed as close under the walking/working surface on which employees are working as being practical, but in no case more than 30 feet (9.1 m) below such level.</P>
+        <P>(d) Personal fall arrest systems. Personal fall arrest systems and their use shall comply with the provisions set forth below: deep anchorages, lifelines, body harness, and deceleration devices.</P>
+      </DIV8>
+    </DIV6>
+
+    <!-- SUBPART P: Excavations -->
+    <DIV6 TYPE="SUBPART" N="P">
+      <HEAD>Subpart P—Excavations</HEAD>
+      
+      <DIV8 TYPE="SECTION" N="1926.650">
+        <HEAD>§ 1926.650 Scope, application, and definitions applicable to this subpart.</HEAD>
+        <P>(a) Scope and application. This subpart applies to all open excavations made in the earth's surface. Excavations are defined to include trenches.</P>
+        <P>(b) Definitions. Accepted engineering practices, benching, cave-in, competent person, excavation, protective system, shoring, sloping, trench.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.651">
+        <HEAD>§ 1926.651 Specific excavation requirements.</HEAD>
+        <P>(a) Surface encumbrances. All surface encumbrances that are located so as to create a hazard to employees shall be removed or supported, as necessary, to safeguard employees.</P>
+        <P>(b) Underground installations. (1) The estimated location of utility installations, such as sewer, telephone, fuel, electric, water lines, shall be determined prior to opening an excavation.</P>
+        <P>(c) Access and egress. (2) Means of egress from trench excavations. A stairway, ladder, ramp or other safe means of egress shall be located in trench excavations that are 4 feet (1.22 m) or more in depth so as to require no more than 25 feet (7.62 m) of lateral travel for employees.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.652">
+        <HEAD>§ 1926.652 Requirements for protective systems.</HEAD>
+        <P>(a) Protection of employees in excavations. (1) Each employee in an excavation shall be protected from cave-ins by an adequate protective system designed in accordance with paragraph (b) or (c) of this section except when: (i) Excavations are made entirely in stable rock; or (ii) Excavations are less than 5 feet (1.52 m) in depth and examination of the ground by a competent person provides no indication of a potential cave-in.</P>
+        <P>(2) Protective systems shall have the capacity to resist without failure all loads that are intended or could reasonably be expected to be applied or transmitted to the system.</P>
+        <P>(b) Design of sloping and benching systems. The slopes and configurations of sloping and benching systems shall be selected and constructed by the employer in accordance with the requirements of paragraph (b)(1); or paragraph (b)(2); or paragraph (b)(3); or paragraph (b)(4).</P>
+        <P>(c) Design of support systems, shield systems, and other protective systems. Designs shall be selected and constructed by the employer in accordance with the requirements of paragraph (c)(1); or (c)(2); or (c)(3); or (c)(4).</P>
+      </DIV8>
+    </DIV6>
+
+    <!-- SUBPART X: Stairways and Ladders -->
+    <DIV6 TYPE="SUBPART" N="X">
+      <HEAD>Subpart X—Stairways and Ladders</HEAD>
+      
+      <DIV8 TYPE="SECTION" N="1926.1050">
+        <HEAD>§ 1926.1050 Scope, application, and definitions applicable to this subpart.</HEAD>
+        <P>(a) Scope and application. This subpart applies to all stairways and ladders used in construction, alteration, repair, painting and decorating, and demolition workplaces.</P>
+        <P>(b) Definitions. Cleat, double-cleat ladder, failure, fixed ladder, individual-rung ladder, ladder stand, lower levels, point of access, portable ladder, single-cleat ladder, stairway, step stool.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.1051">
+        <HEAD>§ 1926.1051 General requirements.</HEAD>
+        <P>(a) A stairway or ladder shall be provided at all personnel points of access where there is a break in elevation of 19 inches (48 cm) or more, and no ramp, runway, sloped embankment, or personnel hoist is provided.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.1052">
+        <HEAD>§ 1926.1052 Stairways.</HEAD>
+        <P>(a) General. (1) Stairways that will not be a permanent part of the structure on which construction work is being performed shall have landings of not less than 30 inches (76 cm) in the direction of travel and extend at least 22 inches (56 cm) in width at every 12 feet (3.7 m) or less of vertical rise.</P>
+        <P>(b) Temporary stairs. (c) Stairrails and handrails. (1) Stairways having four or more risers or rising more than 30 inches (76 cm), whichever is less, shall be equipped with at least one handrail and one stairrail system along each unprotected side or edge.</P>
+      </DIV8>
+
+      <DIV8 TYPE="SECTION" N="1926.1053">
+        <HEAD>§ 1926.1053 Ladders.</HEAD>
+        <P>(a) General requirements. (1) Ladders shall be capable of supporting the following loads without failure: each self-supporting portable ladder at least four times the maximum intended load.</P>
+        <P>(b) Use. The following requirements apply to the use of all ladders, including job-made ladders, except as otherwise indicated:</P>
+        <P>(b)(1) When portable ladders are used for access to an upper landing surface, the ladder side rails shall extend at least 3 feet (.9 m) above the upper landing surface to which the ladder is used to gain access; or, when such an extension is not possible because of the ladder's length, then the ladder shall be secured at its top to a rigid support that will not deflect, and a grasping device, such as a grabrail, shall be provided to assist employees in mounting and dismounting the ladder. In no case shall the extension be such that ladder deflection under load would, by itself, cause the ladder to slip off its support.</P>
+        <P>(b)(2) Ladders shall be maintained free of oil, grease, and other slipping hazards.</P>
+        <P>(b)(4) Ladders shall be used only for the purpose for which they were designed.</P>
+      </DIV8>
+    </DIV6>
+  </DIV5>
+</ECFR>
