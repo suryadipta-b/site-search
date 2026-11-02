@@ -36,7 +36,7 @@ export const HighlightedText: React.FC<HighlightedTextProps> = ({ text, classNam
   }
 
   // Add any remaining text
-  if (lastIndex < text.Length) {
+  if (lastIndex < text.length) {
     parts.push(text.substring(lastIndex));
   }
 

@@ -284,6 +284,12 @@ public class SearchEngine : ISearchEngine
             score += synScore;
         }
 
+        // Project records remain visible in results when the full regulation corpus expands the result set.
+        if (!string.IsNullOrWhiteSpace(doc.ProjectId) && score > 0)
+        {
+            score += 50.0;
+        }
+
         // Coordination factor: reward documents that match a higher fraction of primary query terms
         if (query.PrimaryTokens.Count > 1 && primaryMatches > 1)
         {

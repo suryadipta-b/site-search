@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Construction Site Search</title>
+<style>
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --ink: #1b1e23;
+  --muted: #5a606a;
+  --line: #e2dfd6;
+  --accent: #c2690a;
+  --accent-ink: #8a4a06;
+  --accent-soft: #fbf1e2;
+  --code-bg: #f0eee8;
+  --must: #a61b1b;
+  --must-soft: #fbe9e9;
+  --stretch: #1d5fa8;
+  --stretch-soft: #e7f0fb;
+  --stripe-a: #e0a100;
+  --stripe-b: #23262b;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #131519;
+    --surface: #1b1e23;
+    --ink: #e6e4df;
+    --muted: #a1a5ac;
+    --line: #2e323a;
+    --accent: #f2a03d;
+    --accent-ink: #f6b866;
+    --accent-soft: #2a2115;
+    --code-bg: #23272e;
+    --must: #f08a8a;
+    --must-soft: #3a1d1d;
+    --stretch: #8ab8ee;
+    --stretch-soft: #18263a;
+    --stripe-b: #0b0c0e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #131519;
+  --surface: #1b1e23;
+  --ink: #e6e4df;
+  --muted: #a1a5ac;
+  --line: #2e323a;
+  --accent: #f2a03d;
+  --accent-ink: #f6b866;
+  --accent-soft: #2a2115;
+  --code-bg: #23272e;
+  --must: #f08a8a;
+  --must-soft: #3a1d1d;
+  --stretch: #8ab8ee;
+  --stretch-soft: #18263a;
+  --stripe-b: #0b0c0e;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.stripe {
+  height: 8px;
+  background: repeating-linear-gradient(-45deg, var(--stripe-a) 0 14px, var(--stripe-b) 14px 28px);
+}
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px 64px; }
+
+header.hero { padding: 40px 0 24px; border-bottom: 1px solid var(--line); }
+.eyebrow {
+  font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent-ink); font-weight: 600; margin: 0 0 8px;
+}
+h1 { font-size: clamp(28px, 4.5vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.01em; }
+.lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 70ch; }
+
+.glance {
+  display: grid; gap: 12px; margin: 24px 0 0;
+  grid-template-columns: repeat(4, 1fr);
+}
+.glance div {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+}
+.glance dt { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 4px; }
+.glance dd { margin: 0; font-weight: 600; font-size: 15px; }
+
+nav.toc { margin: 28px 0 8px; font-size: 14px; }
+nav.toc ol { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; }
+nav.toc a {
+  display: inline-block; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--ink); text-decoration: none; background: var(--surface);
+}
+nav.toc a:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+section { padding-top: 36px; }
+h2 {
+  font-size: 24px; margin: 0 0 14px; display: flex; align-items: baseline; gap: 10px;
+  scroll-margin-top: 16px;
+}
+h2 .n {
+  font: 600 13px/1 ui-monospace, "Cascadia Code", Consolas, monospace;
+  color: var(--accent-ink); background: var(--accent-soft); border-radius: 6px; padding: 5px 7px;
+}
+h3 { font-size: 18px; margin: 24px 0 8px; }
+p, li { max-width: 75ch; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+a { color: var(--accent-ink); }
+strong { font-weight: 650; }
+
+.callout {
+  background: var(--accent-soft); border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 16px 0;
+}
+.callout p { margin: 6px 0; }
+.callout.note { background: var(--stretch-soft); border-left-color: var(--stretch); }
+
+.req { list-style: none; padding: 0; margin: 12px 0; }
+.req li {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 14px; margin: 8px 0; max-width: none;
+}
+.req li > b:first-child {
+  font: 600 13px/1 ui-monospace, "Cascadia Code", Consolas, monospace; color: var(--accent-ink); margin-right: 6px;
+}
+.req li ul { margin: 6px 0 2px; }
+
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px; vertical-align: 2px; margin-left: 4px;
+}
+.tag.must { color: var(--must); background: var(--must-soft); }
+.tag.stretch { color: var(--stretch); background: var(--stretch-soft); }
+
+code, pre, kbd { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 14px; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+pre {
+  background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px;
+  padding: 14px 16px; overflow-x: auto; line-height: 1.5; margin: 12px 0;
+}
+pre code { background: none; padding: 0; }
+pre.wrap-code { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.table-scroll { overflow-x: auto; margin: 12px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; background: var(--code-bg); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td code { white-space: nowrap; }
+
+details {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin: 8px 0;
+}
+details summary { cursor: pointer; font-weight: 600; }
+details[open] summary { margin-bottom: 6px; }
+
+footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+@media print {
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .stripe, nav.toc { display: none; }
+  .glance div, .req li, details, .table-scroll, pre { break-inside: avoid; }
+  details { border: 0; padding: 0; }
+  details > *:not(summary) { display: block; }
+  a { color: inherit; }
+}
+@media (max-width: 760px) { .glance { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 380px) { .glance { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="stripe" aria-hidden="true"></div>
+<main class="wrap">
+<header class="hero">
+  <p class="eyebrow">VConstruct · Senior Full-Stack Developer · Take-home assignment</p>
+  <h1>Site search: a search engine for construction project knowledge</h1>
+  <p class="lede">Build a search service and UI that lets a project team find safety regulations and project documents (RFIs, daily logs, non-conformance reports) using the words people actually use on site.</p>
+  <dl class="glance">
+    <div><dt>Effort</dt><dd>About 5–6 focused hours</dd></div>
+    <div><dt>Window</dt><dd>5 calendar days from receipt</dd></div>
+    <div><dt>Frontend</dt><dd>React + TypeScript</dd></div>
+    <div><dt>Backend</dt><dd>.NET (C#) preferred; Node or Python OK</dd></div>
+  </dl>
+</header>
+<nav class="toc" aria-label="Contents">
+  <ol>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#setup">Setup &amp; data</a></li>
+    <li><a href="#requirements">Core requirements</a></li>
+    <li><a href="#stretch">Stretch goals</a></li>
+    <li><a href="#engineering">Engineering bar</a></li>
+    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#deliverables">Deliverables</a></li>
+    <li><a href="#followup">Follow-up</a></li>
+    <li><a href="#rules">Rules &amp; FAQ</a></li>
+  </ol>
+</nav>
+<section id="context">
+  <h2><span class="n">01</span>Context</h2>
+  <p>A building project produces tens of thousands of documents. The answer to "what did the structural consultant say about lap length at the transfer slab?" usually exists in some RFI response or daily log, but nobody can find it, because the documents use five different words for the same thing.</p>
+  <p>Construction vocabulary is hard for generic search:</p>
+  <ul>
+    <li><strong>Abbreviations everywhere</strong>: RFI, NCR, GWB, CMU, MEP, PPE.</li>
+    <li><strong>Regional terms</strong>: on Indian sites rebar is <em>sariya</em>, formwork is <em>shuttering</em> or <em>centering</em>.</li>
+    <li><strong>Identifiers that must match exactly</strong>: <code>RFI-0042</code>, <code>1926.451</code>.</li>
+    <li><strong>Broad vs narrow terms</strong>: a search for "fall protection" should find guardrails and safety nets, but a search for "guardrail" should not return every fall-protection document.</li>
+  </ul>
+  <p>Project documents are also private to their project: a user must never see, or infer the existence of, a document from a project they do not belong to.</p>
+</section>
+
+<section id="problem">
+  <h2><span class="n">02</span>The problem</h2>
+  <p>Build:</p>
+  <ol>
+    <li>An <strong>ingestion step</strong> that loads two differently-shaped sources into one document model.</li>
+    <li>A <strong>search API</strong> with ranking, typo tolerance, domain synonyms, exact identifier matching, facets, highlighting and access control.</li>
+    <li>A <strong>search UI</strong> whose state lives in the URL.</li>
+    <li>A small <strong>relevance check</strong> that proves the results are right.</li>
+  </ol>
+  <p>Build on any engine: PostgreSQL full-text search with <code>pg_trgm</code> (quickest to set up if you know Postgres), OpenSearch/Elasticsearch, Meilisearch, Typesense or Lucene.NET. Defend the choice in the README.</p>
+  <p><strong>Core logic that must be your own code:</strong> ingestion and the document model, query construction (synonym expansion, identifier detection, field boosts), and access-control filtering.</p>
+</section>
+
+<section id="setup">
+  <h2><span class="n">03</span>Setup &amp; data</h2>
+  <div class="callout note">
+    <p>Everything you need is public and free, or included in this document. We send no files with this assignment.</p>
+  </div>
+  <h3>Source 1: OSHA construction safety regulations (public domain)</h3>
+  <p>US OSHA <em>Safety and Health Regulations for Construction</em>, 29 CFR Part 1926: about 300 sections, roughly 3.5 MB of XML.</p>
+  <ul>
+    <li>Read it in a browser: <a href="https://www.ecfr.gov/current/title-29/subtitle-B/chapter-XVII/part-1926">eCFR, 29 CFR Part 1926</a>.</li>
+    <li>Download the full XML from the eCFR API:
+<pre><code>https://www.ecfr.gov/api/versioner/v1/full/2026-10-01/title-29.xml?part=1926</code></pre>
+      The endpoint requires a compressed response: browsers handle that automatically, and with curl add <code>--compressed</code>. API documentation: <a href="https://www.ecfr.gov/developers/documentation/api/v1">eCFR API v1</a>.</li>
+    <li>Each section is a <code>&lt;DIV8 TYPE="SECTION" N="1926.451"&gt;</code> element inside a <code>&lt;DIV6 TYPE="SUBPART"&gt;</code>. Make one document per section and keep the subpart for display.</li>
+  </ul>
+  <p>Regulations are visible to every user.</p>
+
+  <h3>Source 2: project documents (included below)</h3>
+  <p>24 RFIs, daily logs and non-conformance reports (NCRs) from two projects, written the way site teams write: abbreviations, regional terms and a few misspellings. Copy the JSON into a file in your repository and ingest it unchanged, because the relevance check refers to these documents. Adding more documents is optional.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Project</th><th>Name</th><th class="num">Documents</th></tr></thead>
+      <tbody>
+        <tr><td><code>P1</code></td><td>Sunrise Residency Tower B</td><td class="num">12</td></tr>
+        <tr><td><code>P2</code></td><td>Metro Depot Admin Block</td><td class="num">12</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <details>
+    <summary>Project documents (24, JSON) — expand and copy</summary>
+<pre class="wrap-code"><code>[
+  {"id": "rfi-p2-0042", "projectId": "P2", "type": "RFI", "number": "RFI-0042", "discipline": "Structural", "createdAt": "2026-10-14T09:20:00Z",
+   "title": "Lap length at transfer slab TS-3",
+   "body": "Drawing S-301 shows 20 mm Fe 500D bars in transfer slab TS-3 but does not give the lap length. Please confirm whether a 50d lap applies in the tension zone or whether mechanical couplers are required. Contractor proposes staggering laps at 50%. Response: use couplers at TS-3; 50d laps acceptable elsewhere."},
+  {"id": "rfi-p2-0043", "projectId": "P2", "type": "RFI", "number": "RFI-0043", "discipline": "Structural", "createdAt": "2026-10-16T11:05:00Z",
+   "title": "Sariya spacing at slab cut-out near lift core LC-2",
+   "body": "Site team reports that sariya spacing of 150 c/c for bottom bars cannot be maintained around the 1.2 m x 1.5 m slab cut-out at lift core LC-2. Request trimmer bar details and confirmation that spacing may increase to 175 c/c locally."},
+  {"id": "rfi-p2-0044", "projectId": "P2", "type": "RFI", "number": "RFI-0044", "discipline": "MEP", "createdAt": "2026-10-20T08:40:00Z",
+   "title": "HVAC duct opening through PT beam PB-7",
+   "body": "Supply ducts at grid C/4 need a 600 x 400 mm opening through post-tensioned beam PB-7. Request structural approval and tendon profile drawings before any core cutting."},
+  {"id": "rfi-p2-0045", "projectId": "P2", "type": "RFI", "number": "RFI-0045", "discipline": "Civil", "createdAt": "2026-10-22T10:15:00Z",
+   "title": "Concrete grade for PCC below raft",
+   "body": "General notes call for M10 PCC below footings but the raft section on S-102 shows M15. Confirm the grade and thickness of PCC below the raft foundation."},
+  {"id": "rfi-p2-0046", "projectId": "P2", "type": "RFI", "number": "RFI-0046", "discipline": "MEP", "createdAt": "2026-10-27T14:30:00Z",
+   "title": "MEP coordination at level 2 corridor",
+   "body": "Cable tray, sprinkler main and drainage line clash in the level 2 corridor between grids 3 and 5. Ceiling void is only 450 mm. Request a coordinated MEP section and confirmation of the false ceiling level."},
+  {"id": "rfi-p1-0017", "projectId": "P1", "type": "RFI", "number": "RFI-0017", "discipline": "Structural", "createdAt": "2027-02-02T09:00:00Z",
+   "title": "Rebar spacing in first floor slab at balcony cantilever B-4",
+   "body": "Top reinforcement bar spacing of 125 c/c at balcony cantilever B-4 clashes with electrical conduit sleeves. Please advise whether bars may be bundled or spacing adjusted to 140 c/c with additional bars."},
+  {"id": "rfi-p1-0018", "projectId": "P1", "type": "RFI", "number": "RFI-0018", "discipline": "Structural", "createdAt": "2027-02-25T16:10:00Z",
+   "title": "Shuttering removal time for first floor slab",
+   "body": "Please confirm the minimum striking time for soffit shuttering and props of the first floor slab (span 4.2 m, OPC 53 grade concrete). Site proposes removing props at 10 days."},
+  {"id": "rfi-p1-0019", "projectId": "P1", "type": "RFI", "number": "RFI-0019", "discipline": "Architectural", "createdAt": "2027-03-04T12:00:00Z",
+   "title": "GWB partition head detail at false ceiling",
+   "body": "Drawing A-512 shows gypsum board partitions stopping at false ceiling level. Confirm whether partitions between apartments must run up to the slab soffit for acoustic separation, and provide the head detail."},
+  {"id": "rfi-p1-0020", "projectId": "P1", "type": "RFI", "number": "RFI-0020", "discipline": "Architectural", "createdAt": "2027-03-08T10:45:00Z",
+   "title": "Waterproofing membrane at podium planter boxes",
+   "body": "This request for information concerns the planter boxes at podium level. The specification calls for a PVC membrane but the detail shows crystalline coating. Confirm the system and the root barrier requirement."},
+  {"id": "rfi-p1-0021", "projectId": "P1", "type": "RFI", "number": "RFI-0021", "discipline": "Architectural", "createdAt": "2027-03-11T09:30:00Z",
+   "title": "Cat ladder access to overhead water tank",
+   "body": "The cat ladder to the overhead tank is drawn without an extension above the roof. Confirm that side rails extend 1 m above the landing and whether a safety cage is required."},
+  {"id": "rfi-p1-0022", "projectId": "P1", "type": "RFI", "number": "RFI-0022", "discipline": "Structural", "createdAt": "2027-01-28T15:20:00Z",
+   "title": "Reinforcing steel detailing at plinth beam junction",
+   "body": "Reinforcing steel from plinth beams PB-2 and PB-5 congests the junction at column C-8. Request a revised bar bending schedule or permission to crank the bottom bars."},
+  {"id": "dl-p1-0112", "projectId": "P1", "type": "DailyLog", "number": "DL-P1-0112", "discipline": "HSE", "createdAt": "2027-01-12T18:00:00Z",
+   "title": "Daily log 12 Jan 2027",
+   "body": "Excavation continued at grids A-D/1-4, about 180 m3 removed. Depth reached 3.2 m on the east side; sheet piling started next to the boundary wall. Two workers found without harness on scafolding near the lift pit; work stopped and a toolbox talk on PPE was held."},
+  {"id": "dl-p1-0220", "projectId": "P1", "type": "DailyLog", "number": "DL-P1-0220", "discipline": "Structural", "createdAt": "2027-02-20T18:00:00Z",
+   "title": "Daily log 20 Feb 2027",
+   "body": "Centering for the ground floor slab is 70% complete. Rebar binding started in bays 1 to 3. Ground floor slab pour planned for 24 Feb, subject to inspection."},
+  {"id": "dl-p1-0302", "projectId": "P1", "type": "DailyLog", "number": "DL-P1-0302", "discipline": "Structural", "createdAt": "2027-03-02T18:00:00Z",
+   "title": "Daily log 2 Mar 2027",
+   "body": "Ground floor slab concreting completed, 210 m3 of M25. Cubes cast. Curing by ponding. Props to remain until striking is approved under RFI-0018."},
+  {"id": "dl-p2-1105", "projectId": "P2", "type": "DailyLog", "number": "DL-P2-1105", "discipline": "MEP", "createdAt": "2026-11-05T18:00:00Z",
+   "title": "Daily log 5 Nov 2026",
+   "body": "Electrical conduiting on admin block level 2: 420 rm laid. Plumbing sleeves fixed before the slab pour. Rain stopped work from 14:00 to 16:00."},
+  {"id": "dl-p2-1106", "projectId": "P2", "type": "DailyLog", "number": "DL-P2-1106", "discipline": "HSE", "createdAt": "2026-11-06T18:00:00Z",
+   "title": "Daily log 6 Nov 2026",
+   "body": "Guardrail missing at the open edge of the level 3 slab; temporary barricade installed. Safety net along the north face pending material delivery. Personal fall arrest systems issued to 6 workers."},
+  {"id": "dl-p2-1107", "projectId": "P2", "type": "DailyLog", "number": "DL-P2-1107", "discipline": "Structural", "createdAt": "2026-11-07T18:00:00Z",
+   "title": "Daily log 7 Nov 2026",
+   "body": "PT stressing of beams PB-5 to PB-8 completed and elongation records submitted. Duct opening in PB-7 on hold pending reply to RFI-0044."},
+  {"id": "dl-p2-1108", "projectId": "P2", "type": "DailyLog", "number": "DL-P2-1108", "discipline": "Civil", "createdAt": "2026-11-08T18:00:00Z",
+   "title": "Daily log 8 Nov 2026",
+   "body": "Waterproofing of underground tank walls started with crystalline coating. Backfilling of the east side deferred until the coating cures."},
+  {"id": "ncr-p1-0003", "projectId": "P1", "type": "NCR", "number": "NCR-0003", "discipline": "Structural", "createdAt": "2027-02-10T13:00:00Z",
+   "title": "Honeycombing in column C-12, ground floor",
+   "body": "Honeycombing observed after removing the shuttering at column C-12. Cover to rebar below 25 mm at two locations. Repair with polymer-modified mortar after engineer approval."},
+  {"id": "ncr-p1-0004", "projectId": "P1", "type": "NCR", "number": "NCR-0004", "discipline": "Architectural", "createdAt": "2027-04-02T11:30:00Z",
+   "title": "AAC blockwork out of plumb at stair core",
+   "body": "Blockwork at the level 2 stair core is 18 mm out of plumb over 3 m height, beyond the 10 mm tolerance. Dismantle and rebuild the affected courses."},
+  {"id": "ncr-p1-0005", "projectId": "P1", "type": "NCR", "number": "NCR-0005", "discipline": "Architectural", "createdAt": "2027-04-09T10:00:00Z",
+   "title": "Drywall boards stored in the open",
+   "body": "Drywall boards delivered for level 1 partitions were stored uncovered and show moisture damage. Reject the affected boards and store the remainder off the ground under cover."},
+  {"id": "ncr-p2-0007", "projectId": "P2", "type": "NCR", "number": "NCR-0007", "discipline": "HSE", "createdAt": "2026-11-12T09:15:00Z",
+   "title": "Fall protection plan not followed at roof level",
+   "body": "Inspection found workers at the roof parapet without any fall protection. Contractor to submit a revised fall protection plan and retrain the crew before roof work resumes."},
+  {"id": "ncr-p2-0008", "projectId": "P2", "type": "NCR", "number": "NCR-0008", "discipline": "HSE", "createdAt": "2026-11-14T15:40:00Z",
+   "title": "Excavation without protective system at UG tank",
+   "body": "Excavation for the underground water tank reached 2.1 m (about 7 feet) with vertical sides and no shoring, sloping or trench box. Work stopped; contractor to provide a protective system as per the approved method statement."},
+  {"id": "ncr-p2-0009", "projectId": "P2", "type": "NCR", "number": "NCR-0009", "discipline": "Structural", "createdAt": "2026-11-18T12:25:00Z",
+   "title": "Release agent on reinforcement at level 3 slab",
+   "body": "Formwork release agent was sprayed after the reinforcement was placed, contaminating the bars at the level 3 slab. Clean the bars and re-inspect before concreting."}
+]</code></pre>
+  </details>
+
+  <h3>Users</h3>
+  <p>Hard-code these users; there is no login beyond picking one.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>User</th><th>Member of</th><th>Sees</th></tr></thead>
+      <tbody>
+        <tr><td><code>asha</code></td><td>P1</td><td>Regulations and P1 documents</td></tr>
+        <tr><td><code>ravi</code></td><td>P2</td><td>Regulations and P2 documents</td></tr>
+        <tr><td><code>meera</code></td><td>P1, P2</td><td>Everything</td></tr>
+        <tr><td><code>guest</code></td><td>none</td><td>Regulations only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Unified document model</h3>
+  <p>The project documents above already use this shape; map each OSHA section into it too. Extend it if you need to.</p>
+<pre><code>{
+  "id": "rfi-p2-0042",
+  "projectId": "P2",              // null = global (regulations)
+  "type": "RFI",                  // Regulation | RFI | DailyLog | NCR
+  "number": "RFI-0042",           // human identifier, exact-matchable
+  "title": "Lap length at transfer slab TS-3",
+  "body": "…",
+  "discipline": "Structural",     // Civil | Structural | Architectural | MEP | HSE
+  "createdAt": "2026-03-14T09:20:00Z"
+}</code></pre>
+
+  <h3>Synonyms</h3>
+  <p>Load synonyms from a config file. Two-way entries are equivalent terms; one-way entries expand a broad term to narrower ones only.</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Term</th><th>Expands to</th><th>Direction</th></tr></thead>
+      <tbody>
+        <tr><td>rebar</td><td>reinforcement bar, reinforcing steel, sariya</td><td>two-way</td></tr>
+        <tr><td>formwork</td><td>shuttering, centering</td><td>two-way</td></tr>
+        <tr><td>GWB</td><td>gypsum wallboard, gypsum board, drywall</td><td>two-way</td></tr>
+        <tr><td>RFI</td><td>request for information</td><td>two-way</td></tr>
+        <tr><td>PPE</td><td>personal protective equipment</td><td>two-way</td></tr>
+        <tr><td>fall protection</td><td>guardrail, safety net, personal fall arrest system</td><td>one-way</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="requirements">
+  <h2><span class="n">04</span>Core requirements</h2>
+  <h3>Backend</h3>
+  <ul class="req">
+    <li><b>B1</b> Idempotent ingestion <span class="tag must">must</span> One command imports both sources. Rerunning it creates no duplicates; malformed records are logged and skipped.</li>
+    <li><b>B2</b> Search endpoint <span class="tag must">must</span> Returns ranked hits with highlighted snippets.
+      <ul>
+        <li>Ranking with number and title boosted above body.</li>
+        <li>Typo tolerance: <code>scafold</code> finds scaffold; identifiers and very short tokens are not fuzzed.</li>
+        <li>Synonyms from the table above, respecting direction.</li>
+        <li>Identifier detection: <code>RFI-0042</code> and <code>1926.451</code> put the exact document first.</li>
+        <li>Filters with facet counts for type and project; simple pagination.</li>
+      </ul>
+    </li>
+    <li><b>B3</b> Access control <span class="tag must">must</span> Use the users above. Project documents are visible only to members; regulations to everyone. The filter is applied inside the query, not by trimming a page of results, and <strong>facet counts must not leak</strong> documents the user cannot see.</li>
+    <li><b>B4</b> Relevance check <span class="tag must">must</span> Put the cases below in a file, and write one command that runs each query as the given user and prints pass or fail per case. Add cases of your own if you like.
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Query</th><th>As</th><th>Pass when</th></tr></thead>
+          <tbody>
+            <tr><td><code>excavation 5 feet protective system</code></td><td>guest</td><td>1926.652 is in the top 5</td></tr>
+            <tr><td><code>ladder extend 3 feet above landing</code></td><td>guest</td><td>1926.1053 is in the top 5</td></tr>
+            <tr><td><code>scafold guardrail</code></td><td>guest</td><td>1926.451 is in the top 5 (typo tolerance)</td></tr>
+            <tr><td><code>sariya spacing slab</code></td><td>ravi</td><td>RFI-0043 is first</td></tr>
+            <tr><td><code>sariya spacing slab</code></td><td>asha</td><td>RFI-0017 is first (synonym: rebar)</td></tr>
+            <tr><td><code>shuttering removal time</code></td><td>asha</td><td>RFI-0018 is first</td></tr>
+            <tr><td><code>drywall partition acoustic</code></td><td>asha</td><td>RFI-0019 is in the top 3 (synonym: GWB)</td></tr>
+            <tr><td><code>RFI-0042</code></td><td>ravi</td><td>RFI-0042 is first</td></tr>
+            <tr><td><code>RFI-0042</code></td><td>asha</td><td>RFI-0042 is not returned, and the project facet shows only P1</td></tr>
+            <tr><td><code>RFI-0044</code></td><td>ravi</td><td>RFI-0044 ranks above DL-P2-1107, which only mentions it</td></tr>
+            <tr><td><code>fall protection</code></td><td>ravi</td><td>NCR-0007 and DL-P2-1106 are both returned</td></tr>
+            <tr><td><code>guardrail</code></td><td>ravi</td><td>DL-P2-1106 is returned; NCR-0007 is not (one-way synonym)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </li>
+  </ul>
+
+  <h3>Frontend: React + TypeScript</h3>
+  <ul class="req">
+    <li><b>F1</b> Search box <span class="tag must">must</span> Debounced search-as-you-type. A slow, stale response can never overwrite a newer one.</li>
+    <li><b>F2</b> Results <span class="tag must">must</span> Title, number, type, project, date and a highlighted snippet. Highlighting is rendered safely: document text is never injected as raw HTML.</li>
+    <li><b>F3</b> Facets <span class="tag must">must</span> Type and project filters with counts.</li>
+    <li><b>F4</b> URL as state <span class="tag must">must</span> Query, filters and page live in the URL; back and forward work, and a pasted link reproduces the search.</li>
+    <li><b>F5</b> Document view and states <span class="tag must">must</span> Open a document to read it in full. Clear loading, empty and error states. A user switcher lets a reviewer see access control working.</li>
+  </ul>
+</section>
+
+<section id="stretch">
+  <h2><span class="n">05</span>Stretch goals</h2>
+  <p>Optional. Only if the core is done within the timebox; none are needed for a strong result.</p>
+  <ul class="req">
+    <li><b>S1</b> Autocomplete <span class="tag stretch">stretch</span> Title and identifier suggestions with keyboard navigation, still respecting access control.</li>
+    <li><b>S2</b> Synonym admin <span class="tag stretch">stretch</span> CRUD for synonyms that takes effect without a re-index.</li>
+    <li><b>S3</b> Scale <span class="tag stretch">stretch</span> Generate 50,000 documents and report search p95 latency at the API.</li>
+    <li><b>S4</b> Hybrid semantic search <span class="tag stretch">stretch</span> Add embeddings (for example pgvector) and show the effect with your relevance check, including what gets worse.</li>
+  </ul>
+</section>
+
+<section id="engineering">
+  <h2><span class="n">06</span>Engineering bar</h2>
+  <ul>
+    <li><strong>Query construction is unit-tested</strong> without a running engine: identifier detection, synonym direction, fuzziness rules.</li>
+    <li><strong>An access-control test</strong> shows that results and facet counts are both filtered.</li>
+    <li><strong>User input is validated</strong>, and engine syntax characters typed by users cannot break or alter the query.</li>
+  </ul>
+</section>
+
+<section id="evaluation">
+  <h2><span class="n">07</span>How we evaluate</h2>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Area</th><th class="num">Weight</th><th>What we look for</th></tr></thead>
+      <tbody>
+        <tr><td>Search quality</td><td class="num">30%</td><td>Domain queries return the right documents; identifiers, synonyms and typos behave as specified; the relevance check backs it up.</td></tr>
+        <tr><td>Backend design</td><td class="num">20%</td><td>Clean ingestion; a justified engine choice; airtight access control including facets.</td></tr>
+        <tr><td>Frontend design</td><td class="num">20%</td><td>URL-driven state; race-free requests; safe highlighting.</td></tr>
+        <tr><td>Code quality &amp; tests</td><td class="num">20%</td><td>Readable code; focused tests on query construction and access control.</td></tr>
+        <tr><td>Communication</td><td class="num">10%</td><td>The README explains the relevance strategy, trade-offs and gaps honestly.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Stretch goals can lift a submission, but never make up for a weak core.</p>
+</section>
+<section id="deliverables">
+  <h2><span class="n">08</span>Deliverables</h2>
+  <ol>
+    <li><strong>A Git repository</strong> (GitHub, GitLab or Azure DevOps; private is fine, grant us read access). Keep the real commit history; one squashed commit tells us nothing about how you work.</li>
+    <li><strong>A README</strong> that covers:
+      <ul>
+        <li>How to run it: prerequisites and at most five commands from a clean clone. <code>docker compose up</code> is ideal, not mandatory.</li>
+        <li>Architecture: components, data flow, data model. A diagram is welcome; a clear paragraph is enough.</li>
+        <li>Decisions and trade-offs: what you chose, what you rejected, and why.</li>
+        <li>What is missing or broken, and what you would do with more time.</li>
+        <li>Roughly how long you spent.</li>
+        <li>How you used AI tools, if at all (see the rules below).</li>
+      </ul>
+    </li>
+    <li><strong>Tests for the core logic</strong>, runnable with one command (for example <code>dotnet test</code> or <code>npm test</code>). Focused tests on the parts that matter beat broad coverage.</li>
+    <li><strong>A <code>.env.example</code></strong> (or equivalent) listing every setting. Never commit real secrets.</li>
+    <li><strong>A screen recording of at most 5 minutes</strong> walking through the working app. Optional, strongly recommended: it protects you if our environment differs from yours.</li>
+  </ol>
+</section>
+<section id="followup">
+  <h2><span class="n">09</span>Follow-up interview</h2>
+  <p>If your submission moves forward, we schedule a 60–75 minute session with two engineers from the team:</p>
+  <div class="table-scroll">
+    <table>
+      <thead><tr><th>Part</th><th class="num">Time</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Demo</td><td class="num">10 min</td><td>You run the app and show the core flow.</td></tr>
+        <tr><td>Walkthrough</td><td class="num">25 min</td><td>We read the code together. Expect "why this and not that" questions about your decisions.</td></tr>
+        <tr><td>Live change</td><td class="num">25 min</td><td>We ask for a small extension or a fix to a scenario we found. You drive; thinking aloud matters more than finishing.</td></tr>
+        <tr><td>Scale-up discussion</td><td class="num">10 min</td><td>How the design would change at production scale: many tenants, large projects, many concurrent users.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="rules">
+  <h2><span class="n">10</span>Ground rules &amp; FAQ</h2>
+  <h3>Ground rules</h3>
+  <ul>
+    <li><strong>Timebox.</strong> The core requirements are sized for about 5–6 focused hours; you have 5 calendar days to fit them in. Please do not spend much more: stretch goals are optional and a small, solid, well-explained solution beats a broad, fragile one.</li>
+    <li><strong>Data.</strong> Everything you need is in this document and the public links in "Setup &amp; data". We send no other files.</li>
+    <li><strong>Stack.</strong> Frontend in React with TypeScript (strongly preferred). Backend in C# on .NET 8 or later (preferred); Node.js with TypeScript, or Python (FastAPI, Django), is accepted. If you deviate, say why in the README.</li>
+    <li><strong>Libraries.</strong> Use libraries for plumbing (UI components, HTTP, ORM, test runners, charts). The part this assignment names as the core logic must be your own code.</li>
+    <li><strong>AI tools are allowed.</strong> Say in the README where and how you used them. You must be able to explain and change every line in the follow-up; code you cannot explain counts against you.</li>
+    <li><strong>Your own work.</strong> No pair-programming with other people. Asking us questions is encouraged.</li>
+    <li><strong>Authentication.</strong> Do not build a full identity system. A hard-coded user list with a simple login, or a user header the backend trusts, is fine; the authorization rules still have to be enforced on the server.</li>
+  </ul>
+
+  <h3>FAQ</h3>
+  <details>
+    <summary>Something in the brief is ambiguous. What should I do?</summary>
+    <p>Reply to the assignment email if it blocks you. Otherwise make a reasonable assumption, write it down in the README, and move on. How you handle ambiguity is part of what we evaluate.</p>
+  </details>
+  <details>
+    <summary>Can I use a different database?</summary>
+    <p>Yes. PostgreSQL is what we run in production, so it is preferred, but SQLite or another store is fine if you explain the choice. Data must survive a backend restart.</p>
+  </details>
+  <details>
+    <summary>Can I use a UI kit such as MUI, Ant Design, shadcn/ui or Tailwind?</summary>
+    <p>Yes. We care about structure, state management, and UX decisions, not hand-written CSS.</p>
+  </details>
+  <details>
+    <summary>Do I need to deploy it?</summary>
+    <p>No. Running locally is enough. A deployment is a nice touch, never a requirement.</p>
+  </details>
+  <details>
+    <summary>I ran out of time. Should I submit anyway?</summary>
+    <p>Yes. Submit what you have within the 5 days, list what is missing, and explain how you would finish it. Prioritisation under a timebox is a senior skill.</p>
+  </details>
+</section>
+<footer>VConstruct · Senior Full-Stack Developer · Take-home assignment. Please keep this brief and your solution private.</footer>
+</main>
+</body>
+</html>

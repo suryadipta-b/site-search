@@ -201,7 +201,15 @@ public class IngestionService : IIngestionService
             Path.Combine(Directory.GetCurrentDirectory(), "..", "data", filename)
         };
 
-        foreach (var c in candidates)
+        var directories = new List<string>(candidates.Select(Path.GetDirectoryName).Where(d => !string.IsNullOrWhiteSpace(d))!);
+        var directory = new DirectoryInfo(AppContext.BaseDirectory);
+        while (directory != null)
+        {
+            directories.Add(Path.Combine(directory.FullName, "data"));
+            directory = directory.Parent;
+        }
+
+        foreach (var c in directories.Select(directoryPath => Path.Combine(directoryPath, filename)).Concat(candidates))
         {
             if (File.Exists(c))
                 return Path.GetFullPath(c);
