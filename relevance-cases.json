@@ -1,0 +1,113 @@
+[
+  {
+    "query": "excavation 5 feet protective system",
+    "asUser": "guest",
+    "expected": {
+      "type": "in_top_n",
+      "docNumber": "1926.652",
+      "n": 5
+    }
+  },
+  {
+    "query": "ladder extend 3 feet above landing",
+    "asUser": "guest",
+    "expected": {
+      "type": "in_top_n",
+      "docNumber": "1926.1053",
+      "n": 5
+    }
+  },
+  {
+    "query": "scafold guardrail",
+    "asUser": "guest",
+    "expected": {
+      "type": "in_top_n",
+      "docNumber": "1926.451",
+      "n": 5,
+      "note": "typo tolerance"
+    }
+  },
+  {
+    "query": "sariya spacing slab",
+    "asUser": "ravi",
+    "expected": {
+      "type": "is_first",
+      "docNumber": "RFI-0043"
+    }
+  },
+  {
+    "query": "sariya spacing slab",
+    "asUser": "asha",
+    "expected": {
+      "type": "is_first",
+      "docNumber": "RFI-0017",
+      "note": "synonym: rebar"
+    }
+  },
+  {
+    "query": "shuttering removal time",
+    "asUser": "asha",
+    "expected": {
+      "type": "is_first",
+      "docNumber": "RFI-0018"
+    }
+  },
+  {
+    "query": "drywall partition acoustic",
+    "asUser": "asha",
+    "expected": {
+      "type": "in_top_n",
+      "docNumber": "RFI-0019",
+      "n": 3,
+      "note": "synonym: GWB"
+    }
+  },
+  {
+    "query": "RFI-0042",
+    "asUser": "ravi",
+    "expected": {
+      "type": "is_first",
+      "docNumber": "RFI-0042"
+    }
+  },
+  {
+    "query": "RFI-0042",
+    "asUser": "asha",
+    "expected": {
+      "type": "not_returned_and_facet_only",
+      "docNumber": "RFI-0042",
+      "expectedProjects": [
+        "P1"
+      ]
+    }
+  },
+  {
+    "query": "RFI-0044",
+    "asUser": "ravi",
+    "expected": {
+      "type": "ranks_above",
+      "higherDocNumber": "RFI-0044",
+      "lowerDocNumber": "DL-P2-1107"
+    }
+  },
+  {
+    "query": "fall protection",
+    "asUser": "ravi",
+    "expected": {
+      "type": "both_returned",
+      "docNumbers": [
+        "NCR-0007",
+        "DL-P2-1106"
+      ]
+    }
+  },
+  {
+    "query": "guardrail",
+    "asUser": "ravi",
+    "expected": {
+      "type": "returned_and_not_returned",
+      "returnedDocNumber": "DL-P2-1106",
+      "notReturnedDocNumber": "NCR-0007"
+    }
+  }
+]
