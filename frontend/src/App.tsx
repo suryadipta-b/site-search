@@ -8,6 +8,7 @@ import { ResultCard } from './components/ResultCard';
 import { SearchBar } from './components/SearchBar';
 import { useUrlState } from './hooks/useUrlState';
 import { DocumentItem, SearchHit, SearchResponse, UserOption } from './types';
+// @ts-ignore CSS modules are handled by the frontend build configuration
 import './App.css';
 
 export const App: React.FC = () => {

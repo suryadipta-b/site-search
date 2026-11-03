@@ -18,10 +18,9 @@ export const Header: React.FC<HeaderProps> = ({ currentUser, users, onSelectUser
     <header className="app-header">
       <div className="header-inner">
         <div className="brand">
-          <div className="brand-badge">VConstruct</div>
-          <div className="brand-title">
+          <div className="brand-badge">
             <h1>SiteSearch</h1>
-            <span className="brand-sub">Project Knowledge &amp; OSHA Safety Regulations</span>
+            <span className="brand-title">Project Knowledge &amp; OSHA Safety Regulations</span>
           </div>
         </div>
 
